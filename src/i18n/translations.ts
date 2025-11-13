@@ -48,6 +48,12 @@ export const translations = {
     visitService: "Відвідати служіння",
     contactUs: "Зв'язатися з нами",
     
+    // Bible School
+    bibleSchool: "Біблійна школа",
+    bibleSchoolTitle: "Поглибте своє розуміння Слова Божого",
+    bibleSchoolDescription: "Наша Біблійна школа пропонує систематичне вивчення Святого Письма. Приєднуйтесь до нас для духовного зростання та поглиблення знань про Боже Слово.",
+    learnMoreBibleSchool: "Дізнатися більше про школу",
+    
     // Servant Page
     backToHome: "Повернутися на головну",
     biography: "Біографія",
@@ -177,6 +183,12 @@ export const translations = {
     joinFamilyText: "We invite you to become part of our community of believers. Together we grow in faith and serve one another.",
     visitService: "Visit service",
     contactUs: "Contact us",
+    
+    // Bible School
+    bibleSchool: "Bible School",
+    bibleSchoolTitle: "Deepen your understanding of God's Word",
+    bibleSchoolDescription: "Our Bible School offers systematic study of the Holy Scriptures. Join us for spiritual growth and deeper knowledge of God's Word.",
+    learnMoreBibleSchool: "Learn more about the school",
     
     // Servant Page
     backToHome: "Back to home",

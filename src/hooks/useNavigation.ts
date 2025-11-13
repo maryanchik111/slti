@@ -63,6 +63,13 @@ export const useNavigation = () => {
     scrollToSection('service-schedule');
   };
 
+  const learnMoreBibleSchool = () => {
+    // Замінити на посилання на Біблійну школу
+    window.open('https://uebs.com.ua', '_blank');
+    // Або можна перенаправити на окрему сторінку:
+    // router.push('/bible-school');
+  };
+
   return {
     scrollToSection,
     navigateToContact,
@@ -74,6 +81,7 @@ export const useNavigation = () => {
     learnMore,
     visitService,
     contactUs,
-    learnSchedule
+    learnSchedule,
+    learnMoreBibleSchool
   };
 };

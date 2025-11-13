@@ -8,7 +8,7 @@ import { useNavigation } from '@/hooks/useNavigation';
 
 export default function Home() {
   const { t } = useLanguage();
-  const { visitService, contactUs } = useNavigation();
+  const { visitService, contactUs, learnMoreBibleSchool } = useNavigation();
   return (
     <div className="min-h-screen bg-gray-50">
       <Hero />
@@ -172,6 +172,87 @@ export default function Home() {
               </div>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Bible School Section */}
+      <section className="py-16 bg-gradient-to-r from-purple-600 to-blue-600">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <div className="md:flex">
+              <div className="md:w-1/2 bg-gradient-to-br from-purple-500 to-blue-500 p-8 md:p-12 text-white flex items-center">
+                <div>
+                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                    {t('bibleSchool')}
+                  </h2>
+                  <p className="text-xl text-purple-100 mb-6">
+                    {t('bibleSchoolTitle')}
+                  </p>
+                  <div className="hidden md:block">
+                    <div className="flex items-center text-purple-100 mb-3">
+                      <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      Систематичне вивчення Біблії
+                    </div>
+                    <div className="flex items-center text-purple-100 mb-3">
+                      <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      Досвідчені викладачі
+                    </div>
+                    <div className="flex items-center text-purple-100">
+                      <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      Духовне зростання
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="md:w-1/2 p-8 md:p-12 flex items-center">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                    Розпочніть свою духовну освіту
+                  </h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    {t('bibleSchoolDescription')}
+                  </p>
+                  <div className="space-y-4 mb-8">
+                    <div className="flex items-center text-gray-600">
+                      <svg className="w-5 h-5 mr-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Гнучкий розклад занять
+                    </div>
+                    <div className="flex items-center text-gray-600">
+                      <svg className="w-5 h-5 mr-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                      Навчання в групі однодумців
+                    </div>
+                    <div className="flex items-center text-gray-600">
+                      <svg className="w-5 h-5 mr-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                      </svg>
+                      Сертифікат про закінчення
+                    </div>
+                  </div>
+                  <button 
+                    onClick={learnMoreBibleSchool}
+                    className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  >
+                    {t('learnMoreBibleSchool')}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
