@@ -9,7 +9,7 @@ export const translations = {
     contact: "Контакти",
     
     // Hero Section
-    churchName: "Скинія Любові таІстини",
+    churchName: "Скинія Любові та Істини",
     heroSubtitle: "Ласкаво просимо до нашої церковної родини",
     heroLocation: "м. Рівне • Місце зустрічі з Богом та спільнотою віруючих",
     joinService: "Приєднатися до служіння",
