@@ -143,7 +143,7 @@ export const servants: Servant[] = [
     surnameEn: 'Zahorodskiy',
     role: 'Молодіжне служіння',
     roleEn: 'Youth Ministry',
-    image: '/img/Daniel.JPG',
+    image: '/img/danik.ARW',
     bio: 'Даниїл свідомо прийняв слідування за Ісусом у 9 років. Магістр психології, євангеліст та інженер. Він є світлом для світу, голосом серед шуму та руками для потребуючих.',
     bioEn: 'Daniel consciously accepted following Jesus at age 9. Master of Psychology, evangelist and engineer. He is a light to the world, a voice among the noise and hands for those in need.',
     socialMedia: {
