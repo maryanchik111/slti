@@ -2,6 +2,7 @@
 
 import Hero from '@/components/Hero';
 import { ServantCard, EventCard } from '@/components/Cards';
+import Manifest from '@/components/Manifest';
 import { servants, events } from '@/data';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { useNavigation } from '@/hooks/useNavigation';
@@ -174,6 +175,9 @@ export default function Home() {
           )}
         </div>
       </section>
+
+      {/* Manifest Section */}
+      <Manifest />
 
       {/* Bible School Section */}
       <section className="py-16 bg-gradient-to-r from-purple-600 to-blue-600">

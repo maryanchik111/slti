@@ -117,6 +117,13 @@ export const translations = {
     learnOpportunities: "Дізнатися про можливості",
     contactLeaders: "Зв'язатися з лідерами",
 
+    // Manifest Section
+    manifestTitle: "Маніфест",
+    manifestSubtitle: "Наше послання до спільноти",
+    watchVideo: "Переглянути відео",
+    readManifest: "Прочитати маніфест",
+    shareManifest: "Поділитися маніфестом",
+
     // Footer
     footerDescription: "Ми - церковна родина, що служить Богу та людям, поширюючи любов Христа в нашому місті та за його межами.",
     footerQuickLinks: "Швидкі посилання",
@@ -252,6 +259,13 @@ export const translations = {
     joinMinistryText: "We have a place for everyone who wants to serve God and people. Find your calling in our church.",
     learnOpportunities: "Learn about opportunities",
     contactLeaders: "Contact leaders",
+
+    // Manifest Section
+    manifestTitle: "Manifest",
+    manifestSubtitle: "Our message to the community",
+    watchVideo: "Watch Video",
+    readManifest: "Read Manifest",
+    shareManifest: "Share Manifest",
 
     // Footer
     footerDescription: "We are a church family that serves God and people, spreading Christ's love in our city and beyond.",
