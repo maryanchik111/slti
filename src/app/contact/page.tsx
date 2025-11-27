@@ -32,7 +32,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-1">{t('address')}</h3>
-                  <p className="text-gray-600">вул. Соборна, 25<br />м. Рівне, 33000<br />Рівненська область</p>
+                  <p className="text-gray-600">вул. Уласа Самчука, 14<br />м. Рівне, 33000<br />Рівненська область</p>
                 </div>
               </div>
 
@@ -45,7 +45,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-1">{t('phone')}</h3>
-                  <p className="text-gray-600">+38 (0362) 123-456<br />+38 (050) 123-45-67</p>
+                  <p className="text-gray-600">+38 (063) 344-45-55</p>
                 </div>
               </div>
 
@@ -58,7 +58,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-1">{t('email')}</h3>
-                  <p className="text-gray-600">info@slti.church<br />pastor@slti.church</p>
+                  <p className="text-gray-600">slti0633444555@gmail.com</p>
                 </div>
               </div>
 
@@ -72,9 +72,10 @@ export default function ContactPage() {
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-1">{t('schedule')}</h3>
                   <div className="text-gray-600 space-y-1">
-                    <p><strong>Неділя:</strong> 10:00 - 12:00 (Головне служіння)</p>
-                    <p><strong>Середа:</strong> 19:00 - 20:30 (Молитовне служіння)</p>
-                    <p><strong>П'ятниця:</strong> 19:00 - 21:00 (Молодіжка)</p>
+                    <p><strong>Неділя:</strong> 14:00 (Недільне служіння)</p>
+                    <p><strong>Субота:</strong> 15:40 (Недільна школа)</p>
+                    <p><strong>Субота:</strong> 18:00 (Молодіжка)</p>
+                    <p><strong>Четвер:</strong> 19:00 (Вивчення Писання)</p>
                   </div>
                 </div>
               </div>
@@ -224,7 +225,7 @@ export default function ContactPage() {
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
               </svg>
               <p className="text-lg font-medium">Інтерактивна карта</p>
-              <p className="text-sm">вул. Соборна, 25, м. Рівне</p>
+              <p className="text-sm">вул. Уласа Самчука, 14, м. Рівне</p>
             </div>
           </div>
         </div>

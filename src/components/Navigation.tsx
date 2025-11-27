@@ -20,7 +20,7 @@ export default function Navigation() {
               </svg>
             </div>
             <div className="hidden sm:block">
-              <div className="text-xl font-bold text-gray-800">СЛТІ</div>
+              <div className="text-xl font-bold text-gray-800">slti-church.com</div>
               <div className="text-xs text-gray-600">Скинія Любові та Істини</div>
             </div>
           </Link>

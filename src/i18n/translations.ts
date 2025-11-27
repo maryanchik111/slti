@@ -22,7 +22,7 @@ export const translations = {
     youth: "Молодіжка",
     sunday: "Неділя 14:00",
     thursday: "Четвер 19:00",
-    saturdaySchool: "Субота 15:00",
+    saturdaySchool: "Субота 15:40",
     saturdayYouth: "Субота 18:00",
     
     // Sections
@@ -133,7 +133,7 @@ export const translations = {
     footerPrayerMeeting: "Вивчення Писання",
     footerThursdayTime: "Четвер 19:00",
     footerSundaySchool: "Недільна школа",
-    footerSaturdaySchoolTime: "Субота 15:00",
+    footerSaturdaySchoolTime: "Субота 15:40",
     footerYouthService: "Молодіжне служіння",
     footerSaturdayYouthTime: "Субота 18:00",
     followUs: "Слідкуйте за нами",
@@ -165,7 +165,7 @@ export const translations = {
     youth: "Youth",
     sunday: "Sunday 2:00 PM",
     thursday: "Thursday 7:00 PM",
-    saturdaySchool: "Saturday 3:00 PM",
+    saturdaySchool: "Saturday 3:40 PM",
     saturdayYouth: "Saturday 6:00 PM",
     
     // Sections
@@ -276,7 +276,7 @@ export const translations = {
     footerPrayerMeeting: "Bible Study",
     footerThursdayTime: "Thursday 7:00 PM",
     footerSundaySchool: "Sunday School",
-    footerSaturdaySchoolTime: "Saturday 3:00 PM",
+    footerSaturdaySchoolTime: "Saturday 3:40 PM",
     footerYouthService: "Youth Service",
     footerSaturdayYouthTime: "Saturday 6:00 PM",
     followUs: "Follow Us",

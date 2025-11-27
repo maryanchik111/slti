@@ -28,9 +28,8 @@ export default function Hero() {
         <div className="mb-4 sm:mb-8">
         </div>
         
-        <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
-          {t('churchName').split(' ').slice(0, 2).join(' ')} <span className="text-yellow-300">{t('churchName').split(' ')[2]}</span><br />
-          {t('churchName').split(' ').slice(3).join(' ').split(' ')[0]} <span className="text-yellow-300">{t('churchName').split(' ').slice(4).join(' ')}</span>
+        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight whitespace-nowrap">
+          {t('churchName')}
         </h1>
         
         <p className="text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 text-blue-100 max-w-2xl mx-auto">

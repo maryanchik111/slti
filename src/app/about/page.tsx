@@ -103,11 +103,11 @@ export default function AboutPage() {
         {/* Statistics */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
-            <div className="text-4xl font-bold text-blue-600 mb-2">1</div>
-            <div className="text-gray-600">Рік служіння</div>
+            <div className="text-4xl font-bold text-blue-600 mb-2">2</div>
+            <div className="text-gray-600">Роки служіння</div>
           </div>
           <div>
-            <div className="text-4xl font-bold text-blue-600 mb-2">20+</div>
+            <div className="text-4xl font-bold text-blue-600 mb-2">45+</div>
             <div className="text-gray-600">Членів церкви</div>
           </div>
           <div>
