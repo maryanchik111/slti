@@ -17,10 +17,10 @@ export default function ContactPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="max-w-4xl mx-auto">
           {/* Contact Info */}
-          <div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-8">{t('howToFind')}</h2>
+          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-8">{t('howToFind')}</h2>
             
             <div className="space-y-6">
               {/* Address */}
@@ -128,105 +128,22 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-
-          {/* Contact Form */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">{t('contactForm')}</h2>
-            <form className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Ваше ім'я *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="Введіть ваше ім'я"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="your@email.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Телефон
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="+38 (XXX) XXX-XX-XX"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                  Тема повідомлення *
-                </label>
-                <select
-                  id="subject"
-                  name="subject"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                >
-                  <option value="">Оберіть тему</option>
-                  <option value="general">Загальне питання</option>
-                  <option value="prayer">Молитовна потреба</option>
-                  <option value="ministry">Служіння в церкві</option>
-                  <option value="pastoral">Пасторська опіка</option>
-                  <option value="event">Церковні події</option>
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Повідомлення *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
-                  placeholder="Напишіть ваше повідомлення..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                {t('sendMessage')}
-              </button>
-            </form>
-          </div>
         </div>
 
-        {/* Map placeholder */}
+        {/* Map */}
         <div className="mt-16">
-          <div className="bg-gray-200 rounded-2xl h-96 flex items-center justify-center">
-            <div className="text-center text-gray-500">
-              <svg className="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
-              </svg>
-              <p className="text-lg font-medium">Інтерактивна карта</p>
-              <p className="text-sm">вул. Уласа Самчука, 14, м. Рівне</p>
-            </div>
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2542.8947688776744!2d26.252863476920283!3d50.61872297160694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472f132e5e5e5e5e%3A0x5e5e5e5e5e5e5e5e!2z0LLRg9C7LiDQo9C70LDRgdCwINCh0LDQvNGH0YPQutCwLCAxNCwg0KDRltCy0L3QtSwg0KDRltCy0L3QtdC90YHRjNC60LAg0L7QsdC70LDRgdGC0YwsINCj0LrRgNCw0ZfQvdCwLCAzMzAwMA!5e0!3m2!1suk!2sus!4v1707519600000!5m2!1suk!2sus"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full h-96 md:h-[500px]"
+              title="Карта розташування церкви"
+            />
           </div>
         </div>
       </div>
