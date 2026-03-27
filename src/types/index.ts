@@ -11,7 +11,7 @@ export interface Servant {
   bioEn?: string;
   socialMedia: {
     facebook?: string;
-    instagram?: string;  
+    instagram?: string;
     telegram?: string;
     youtube?: string;
     tiktok?: string;
@@ -29,6 +29,10 @@ export interface Event {
   titleEn?: string;
   descriptionEn?: string;
   locationEn?: string;
+  category?: 'holiday' | 'regular' | 'birthday' | 'baptizing' | 'baby-shower' | 'thanksgiving';
+  photos?: string[];
+  content?: string;
+  contentEn?: string;
 }
 
 export interface Sermon {

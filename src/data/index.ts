@@ -390,8 +390,66 @@ export const servants: Servant[] = [
 ];
 
 export const events: Event[] = [
-  // Наразі немає запланованих подій
-  // No events planned at the moment
+  {
+    id: '2nd-birthday',
+    title: '2-й День Народження Церкви',
+    titleEn: '2nd Birthday of the Church',
+    description: 'Святкуємо 2-й день народження церкви! Урочисте зібрання церкви з нагоди дня народження церкви.',
+    descriptionEn: 'Celebrating the 2nd birthday of the church! Solemn church gathering on the occasion of the birthday of the church.',
+    date: '2026-03-20',
+    image: '/img/2ndbd.jpg',
+    location: 'Ресторан Кінза',
+    locationEn: 'Kinza Restaurant',
+    category: 'birthday',
+    content: 'Другий день народження церкви - це особлива подія для кожного з нас. Ми запрошуємо кожного розділити з нами цю радісну подію. Програма включає урочисте прославлення, театральні постановки та надихаюче послання про силу віри.',
+    contentEn: 'The second birthday of the church is a special event for each of us. We invite everyone to share this joyful event with us. The program includes solemn praise, theatrical performances, and an inspiring message about the power of faith.',
+    photos: []
+  },
+  {
+    id: 'baptizing-2025',
+    title: 'Водне Хрещення',
+    titleEn: 'Water Baptism',
+    description: 'Особливе служіння водного хрещення. Приєднуйтесь, щоб засвідчити цей важливий крок віри нових членів нашої церкви.',
+    descriptionEn: 'A special water baptism service. Join us to witness this important step of faith for new members of our church.',
+    date: '2025-08-02',
+    image: '/img/baptizing.JPG',
+    location: 'Озеро Набережне',
+    locationEn: 'Naberezhne Lake',
+    category: 'baptizing',
+    content: 'Водне хрещення — це не просто обряд, а публічне свідчення про віру в Ісуса Христа та обіцянка Богу служити в добрій совісті. Це свято для всієї церкви, коли ми бачимо, як Господь долучає до Своєї родини нові душі.',
+    contentEn: 'Water baptism is not just a rite, but a public testimony of faith in Jesus Christ and a promise to God to serve in good conscience. It is a holiday for the whole church as we see the Lord adding new souls to His family.',
+    photos: []
+  },
+  {
+    id: 'baby-shower-2025',
+    title: 'Baby Shower',
+    titleEn: 'Baby Shower',
+    description: 'Радісна подія — очікування малюка в нашій церковній родині. Приєднуйтесь, щоб підтримати та привітати майбутніх батьків.',
+    descriptionEn: 'A joyful event — expecting a baby in our church family. Join us to support and congratulate the future parents.',
+    date: '2025-06-15',
+    image: '/img/babyshower.jpg',
+    location: 'Church Hall',
+    locationEn: 'Church Hall',
+    category: 'baby-shower',
+    content: 'Baby Shower — це час радості, спілкування та благословення для нової сімʼї. Ми збираємось разом, щоб розділити це особливе очікування та висловити нашу любов і підтримку.',
+    contentEn: 'Baby Shower is a time of joy, communication, and blessing for the new family. We gather together to share this special expectation and express our love and support.',
+    photos: []
+  },
+  {
+    id: 'thanksgiving-2024',
+    title: 'День Подяки',
+    titleEn: 'Thanksgiving Day',
+    description: 'Особливе святкове богослужіння, присвячене вдячності Богу за Його благословення та плоди землі.',
+    descriptionEn: 'A special holiday service dedicated to gratitude to God for His blessings and the fruits of the earth.',
+    date: '2024-11',
+    image: '/img/tgd2024.jpg',
+    location: 'Church Sanctuary',
+    locationEn: 'Church Sanctuary',
+    category: 'thanksgiving',
+    content: 'День Подяки — це час зупинитися та подякувати Господу за все, що ми маємо. Це свято радості, коли ми разом славимо Бога за Його мирість, забезпечення та любов до нас.',
+    contentEn: 'Thanksgiving Day is a time to stop and thank the Lord for everything we have. It is a holiday of joy as we together praise God for His mercy, provision, and love for us.',
+    photos: []
+  }
 ];
 
 export const sermons: Sermon[] = [

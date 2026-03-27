@@ -7,14 +7,14 @@ export const translations = {
     events: "Події",
     about: "Про нас",
     contact: "Контакти",
-    
+
     // Hero Section
     churchName: "Скинія Любові та Істини",
     heroSubtitle: "Ласкаво просимо до нашої церковної родини",
     heroLocation: "м. Рівне • Місце зустрічі з Богом та спільнотою віруючих",
     joinService: "Приєднатися до служіння",
     learnMore: "Дізнатися більше",
-    
+
     // Schedule
     sundayService: "Недільне служіння",
     prayer: "Вивчення Писання",
@@ -24,7 +24,7 @@ export const translations = {
     thursday: "Четвер 19:00",
     saturdaySchool: "Субота 15:40",
     saturdayYouth: "Субота 18:00",
-    
+
     // Sections
     ourServants: "Наші служителі",
     servantsSubtitle: "Познайомтесь з нашою командою служителів, які присвятили своє життя служінню Богу та людям",
@@ -41,25 +41,33 @@ export const translations = {
     eventsSubtitle: "Не пропустіть наші особливі заходи та зустрічі",
     noEventsPlanned: "Наразі немає запланованих подій",
     noEventsMessage: "Слідкуйте за нашими оновленнями в соціальних мережах або підпишіться на розсилку, щоб дізнаватися про нові події першими!",
-    
+    holidayEvents: "Святкові події",
+    celebrateMoments: "Святкуйте з нами особливі моменти віри",
+    eventGallery: "Галерея",
+    backToEvents: "Назад до подій",
+    eventDetails: "Деталі події",
+    baptism: "Хрещення",
+    babyShower: "Baby Shower",
+    thanksgiving: "День Подяки",
+
     // Call to Action
     joinFamily: "Приєднуйтесь до нашої церковної родини",
     joinFamilyText: "Ми запрошуємо вас стати частиною нашої спільноти віруючих. Разом ми зростаємо у вірі та служимо один одному.",
     visitService: "Відвідати служіння",
     contactUs: "Зв'язатися з нами",
-    
+
     // Bible School
     bibleSchool: "Біблійна школа",
     bibleSchoolTitle: "Поглибте своє розуміння Слова Божого",
     bibleSchoolDescription: "Наша Біблійна школа пропонує систематичне вивчення Святого Письма. Приєднуйтесь до нас для духовного зростання та поглиблення знань про Боже Слово.",
     learnMoreBibleSchool: "Дізнатися більше про школу",
-    
+
     // Servant Page
     backToHome: "Повернутися на головну",
     biography: "Біографія",
     contacts: "Контакти",
     otherServants: "Інші служителі",
-    
+
     // About Page
     aboutChurch: "Про нашу церкву",
     aboutSubtitle: "Скинія Любові та Істини - це місце, де кожна людина може зустрітися з Богом та знайти свою духовну родину в місті Рівне.",
@@ -74,7 +82,7 @@ export const translations = {
     churchMembers: "Членів церкви",
     ministers: "Служителів",
     childrenYouth: "Дітей та молоді",
-    
+
     // Contact Page
     contactTitle: "Контакти",
     contactSubtitle: "Ми завжди раді вас бачити! Приєднуйтесь до нас на служіннях або зв'яжіться з нами будь-яким зручним способом.",
@@ -86,7 +94,7 @@ export const translations = {
     socialMedia: "Соціальні мережі",
     contactForm: "Зв'яжіться з нами",
     sendMessage: "Відправити повідомлення",
-    
+
     // Sermons Page
     sermonsTitle: "Служіння та проповіді",
     sermonsSubtitle: "Перегляньте наші останні служіння та проповіді. Кожне послання несе в собі Божу любов та мудрість для вашого духовного зростання.",
@@ -96,7 +104,7 @@ export const translations = {
     dontMissServices: "Не пропустіть наші служіння",
     servicesText: "Приєднуйтесь до нас щонеділі о 10:00 для особливого часу поклоніння та навчання",
     learnSchedule: "Дізнатися про розклад",
-    
+
     // Servants Page
     leadershipTeam: "Керівна команда",
     ministryAreas: "Сфери служіння",
@@ -141,7 +149,7 @@ export const translations = {
     copyright: "© 2025 Скинія Любові та Істини. Всі права захищені.",
     madeWith: "Створено з ❤️ для Божої слави"
   },
-  
+
   en: {
     // Navigation
     home: "Home",
@@ -150,14 +158,14 @@ export const translations = {
     events: "Events",
     about: "About",
     contact: "Contact",
-    
+
     // Hero Section
     churchName: "Tabernacle of Love and Truth",
     heroSubtitle: "Welcome to our church family",
     heroLocation: "Rivne • A place to meet God and community of believers",
     joinService: "Join the service",
     learnMore: "Learn more",
-    
+
     // Schedule
     sundayService: "Sunday Service",
     prayer: "Bible Study",
@@ -167,7 +175,7 @@ export const translations = {
     thursday: "Thursday 7:00 PM",
     saturdaySchool: "Saturday 3:40 PM",
     saturdayYouth: "Saturday 6:00 PM",
-    
+
     // Sections
     ourServants: "Our Ministers",
     servantsSubtitle: "Meet our team of ministers who have dedicated their lives to serving God and people",
@@ -184,25 +192,33 @@ export const translations = {
     eventsSubtitle: "Don't miss our special events and gatherings",
     noEventsPlanned: "No events planned at the moment",
     noEventsMessage: "Follow our social media updates or subscribe to our newsletter to be the first to know about new events!",
-    
+    holidayEvents: "Holiday Events",
+    celebrateMoments: "Celebrate with us the special moments of faith",
+    eventGallery: "Gallery",
+    backToEvents: "Back to events",
+    eventDetails: "Event Details",
+    baptism: "Baptism",
+    babyShower: "Baby Shower",
+    thanksgiving: "Thanksgiving Day",
+
     // Call to Action
     joinFamily: "Join our church family",
     joinFamilyText: "We invite you to become part of our community of believers. Together we grow in faith and serve one another.",
     visitService: "Visit service",
     contactUs: "Contact us",
-    
+
     // Bible School
     bibleSchool: "Bible School",
     bibleSchoolTitle: "Deepen your understanding of God's Word",
     bibleSchoolDescription: "Our Bible School offers systematic study of the Holy Scriptures. Join us for spiritual growth and deeper knowledge of God's Word.",
     learnMoreBibleSchool: "Learn more about the school",
-    
+
     // Servant Page
     backToHome: "Back to home",
     biography: "Biography",
     contacts: "Contact",
     otherServants: "Other Ministers",
-    
+
     // About Page
     aboutChurch: "About our church",
     aboutSubtitle: "Tabernacle of Love and Truth is a place where everyone can meet God and find their spiritual family in Rivne.",
@@ -217,7 +233,7 @@ export const translations = {
     churchMembers: "Church Members",
     ministers: "Ministers",
     childrenYouth: "Children & Youth",
-    
+
     // Contact Page
     contactTitle: "Contact",
     contactSubtitle: "We are always glad to see you! Join us at services or contact us in any convenient way.",
@@ -229,7 +245,7 @@ export const translations = {
     socialMedia: "Social Media",
     contactForm: "Contact us",
     sendMessage: "Send message",
-    
+
     // Sermons Page
     sermonsTitle: "Services and Sermons",
     sermonsSubtitle: "Watch our latest services and sermons. Each message carries God's love and wisdom for your spiritual growth.",
@@ -239,7 +255,7 @@ export const translations = {
     dontMissServices: "Don't miss our services",
     servicesText: "Join us every Sunday at 10:00 AM for a special time of worship and learning",
     learnSchedule: "Learn about schedule",
-    
+
     // Servants Page
     leadershipTeam: "Leadership Team",
     ministryAreas: "Ministry Areas",

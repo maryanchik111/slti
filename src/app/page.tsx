@@ -8,12 +8,12 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { useNavigation } from '@/hooks/useNavigation';
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { visitService, contactUs, learnMoreBibleSchool } = useNavigation();
   return (
     <div className="min-h-screen bg-gray-50">
       <Hero />
-      
+
       {/* Servants Section */}
       <section className="py-20 bg-gradient-to-b from-white to-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,10 +53,10 @@ export default function Home() {
           <div className="mb-12">
             <h3 className="text-2xl font-bold text-center mb-10 text-amber-700">{t('keyMinistries')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {servants.filter(s => 
-                s.role.includes('Музич') || 
-                s.role.includes('Левит') || 
-                s.role.includes('Молодіжн') || 
+              {servants.filter(s =>
+                s.role.includes('Музич') ||
+                s.role.includes('Левит') ||
+                s.role.includes('Молодіжн') ||
                 s.role.includes('Дитяч') ||
                 s.role.includes('Євангеліст')
               ).slice(0, 6).map((servant) => (
@@ -67,8 +67,8 @@ export default function Home() {
 
           {/* Кнопка "Переглянути всіх" */}
           <div className="text-center">
-            <a 
-              href="/servants" 
+            <a
+              href="/servants"
               className="inline-flex items-center px-10 py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold rounded-full hover:from-amber-600 hover:to-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               {t('viewAllServants')}
@@ -92,7 +92,7 @@ export default function Home() {
               Приєднуйтесь до наших регулярних служінь та заходів
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             <div className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
               <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
@@ -103,7 +103,7 @@ export default function Home() {
               <h3 className="font-bold text-lg text-slate-800 mb-2">{t('sundayService')}</h3>
               <p className="text-amber-600 font-semibold">{t('sunday')}</p>
             </div>
-            
+
             <div className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
               <div className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -113,7 +113,7 @@ export default function Home() {
               <h3 className="font-bold text-lg text-slate-800 mb-2">{t('prayer')}</h3>
               <p className="text-emerald-600 font-semibold">{t('thursday')}</p>
             </div>
-            
+
             <div className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
               <div className="w-16 h-16 bg-gradient-to-br from-violet-400 to-violet-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -123,7 +123,7 @@ export default function Home() {
               <h3 className="font-bold text-lg text-slate-800 mb-2">{t('sundaySchool')}</h3>
               <p className="text-violet-600 font-semibold">{t('saturdaySchool')}</p>
             </div>
-            
+
             <div className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
               <div className="w-16 h-16 bg-gradient-to-br from-rose-400 to-rose-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -134,16 +134,16 @@ export default function Home() {
               <p className="text-rose-600 font-semibold">{t('saturdayYouth')}</p>
             </div>
           </div>
-          
+
           <div className="text-center mt-16">
             <div className="inline-flex items-center gap-2 text-slate-600 mb-8 bg-white px-6 py-3 rounded-full shadow-md">
               <svg className="w-5 h-5 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
+                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               </svg>
               <span className="font-medium">м. Рівне, вул. Уласа Самчука, 14</span>
             </div>
             <div>
-              <button 
+              <button
                 onClick={contactUs}
                 className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
               >
@@ -153,6 +153,28 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Holiday Events Section */}
+      {events.filter(e => e.category === 'holiday' || e.category === 'birthday' || e.category === 'baptizing' || e.category === 'baby-shower' || e.category === 'thanksgiving').length > 0 && (
+        <section className="py-20 bg-gradient-to-br from-amber-500/5 via-transparent to-amber-600/5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <div className="w-16 h-1 bg-amber-500 mx-auto mb-4"></div>
+              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent mb-6">
+                {t('holidayEvents')}
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                {t('celebrateMoments')}
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {events.filter(e => e.category === 'holiday' || e.category === 'birthday' || e.category === 'baptizing' || e.category === 'baby-shower' || e.category === 'thanksgiving').map((event) => (
+                <EventCard key={event.id} event={event} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Events Section */}
       <section className="py-20 bg-white">
@@ -166,9 +188,9 @@ export default function Home() {
               {t('eventsSubtitle')}
             </p>
           </div>
-          {events.length > 0 ? (
+          {events.filter(e => e.category !== 'holiday' && e.category !== 'birthday' && e.category !== 'baptizing' && e.category !== 'baby-shower' && e.category !== 'thanksgiving').length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {events.map((event) => (
+              {events.filter(e => e.category !== 'holiday' && e.category !== 'birthday' && e.category !== 'baptizing' && e.category !== 'baby-shower' && e.category !== 'thanksgiving').map((event) => (
                 <EventCard key={event.id} event={event} />
               ))}
             </div>
@@ -200,7 +222,7 @@ export default function Home() {
                 {/* Decorative circles */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full -mr-32 -mt-32"></div>
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-amber-500/10 rounded-full -ml-24 -mb-24"></div>
-                
+
                 <div className="relative z-10">
                   <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-xl">
                     <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -275,7 +297,7 @@ export default function Home() {
                       <span className="font-medium">Сертифікат про закінчення</span>
                     </div>
                   </div>
-                  <button 
+                  <button
                     onClick={learnMoreBibleSchool}
                     className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                   >
@@ -295,33 +317,33 @@ export default function Home() {
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl"></div>
         </div>
-        
+
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="inline-block mb-6">
             <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-amber-600 rounded-2xl flex items-center justify-center mx-auto shadow-2xl">
               <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10 2L3 7v11h14V7l-7-5zM8 16H6v-4h2v4zm4 0h-2v-4h2v4zm4 0h-2V9h2v7z"/>
+                <path d="M10 2L3 7v11h14V7l-7-5zM8 16H6v-4h2v4zm4 0h-2v-4h2v4zm4 0h-2V9h2v7z" />
               </svg>
             </div>
           </div>
-          
+
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             {t('joinFamily')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mb-6"></div>
-          
+
           <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
             {t('joinFamilyText')}
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
+            <button
               onClick={visitService}
               className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
             >
               {t('visitService')}
             </button>
-            <button 
+            <button
               onClick={contactUs}
               className="border-2 border-white/60 hover:border-white text-white hover:bg-white/10 font-semibold py-4 px-10 rounded-full transition-all duration-300 backdrop-blur-sm"
             >
