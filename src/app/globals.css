@@ -5,6 +5,7 @@
   --foreground: #2C2C2C;
   --church-gold: #D4A574;
   --church-navy: #1B3A5F;
+  --church-blue: #0056b3;
   --church-cream: #F5F1E8;
   --church-dark: #2D2D2D;
 }
@@ -94,15 +95,15 @@ html {
 
 /* Custom button hover effects */
 .btn-primary {
-  @apply bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-md transition-all duration-300 shadow-md hover:shadow-lg;
 }
 
 .btn-secondary {
-  @apply border-2 border-white/80 text-white hover:bg-white hover:text-slate-800 font-semibold py-4 px-8 rounded-full transition-all duration-300 backdrop-blur-sm;
+  @apply border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold py-4 px-8 rounded-md transition-all duration-300 backdrop-blur-sm;
 }
 
 .btn-outline {
-  @apply border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white font-semibold py-3 px-6 rounded-full transition-all duration-300;
+  @apply border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold py-3 px-6 rounded-md transition-all duration-300;
 }
 
 /* Card hover effects */
@@ -123,9 +124,9 @@ html {
 .text-shimmer {
   background: linear-gradient(
     90deg,
-    #D4A574 0%,
-    #F0D5A8 45%,
-    #D4A574 100%
+    #0056b3 0%,
+    #4da3ff 45%,
+    #0056b3 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;

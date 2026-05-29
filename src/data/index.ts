@@ -391,6 +391,21 @@ export const servants: Servant[] = [
 
 export const events: Event[] = [
   {
+    id: 'love-is-act-2026',
+    title: 'Молодіжна конференція LOVE IS ACT',
+    titleEn: 'Youth Conference LOVE IS ACT',
+    description: 'Особливий час для молоді: натхнення, поклоніння та спілкування.',
+    descriptionEn: 'A special time for youth: inspiration, worship, and fellowship.',
+    date: '2026-05-16',
+    image: '/img/konfa.jpg',
+    location: 'Церква "Скинія Любові та Істини"',
+    locationEn: 'Tabernacle of Love and Truth Church',
+    category: 'holiday',
+    content: 'Запрошуємо молодь на конференцію LOVE IS ACT! Це час, щоб оновити свої стосунки з Богом, знайти нових друзів та надихнутися на дії.',
+    contentEn: 'We invite the youth to the LOVE IS ACT conference! It is a time to renew your relationship with God, find new friends, and be inspired to act.',
+    photos: []
+  },
+  {
     id: '2nd-birthday',
     title: '2-й День Народження Церкви',
     titleEn: '2nd Birthday of the Church',

@@ -26,22 +26,22 @@ export default function Navigation() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-1">
-            <Link href="/" className="text-slate-700 hover:text-amber-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-amber-50">
+            <Link href="/" className="text-slate-700 hover:text-blue-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-blue-50">
               {t('home')}
             </Link>
-            <Link href="/servants" className="text-slate-700 hover:text-amber-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-amber-50">
+            <Link href="/servants" className="text-slate-700 hover:text-blue-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-blue-50">
               {t('servants')}
             </Link>
-            <Link href="/sermons" className="text-slate-700 hover:text-amber-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-amber-50">
+            <Link href="/sermons" className="text-slate-700 hover:text-blue-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-blue-50">
               {t('sermons')}
             </Link>
-            <Link href="/events" className="text-slate-700 hover:text-amber-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-amber-50">
+            <Link href="/events" className="text-slate-700 hover:text-blue-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-blue-50">
               {t('events')}
             </Link>
-            <Link href="/about" className="text-slate-700 hover:text-amber-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-amber-50">
+            <Link href="/about" className="text-slate-700 hover:text-blue-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-blue-50">
               {t('about')}
             </Link>
-            <Link href="/contact" className="text-slate-700 hover:text-amber-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-amber-50">
+            <Link href="/contact" className="text-slate-700 hover:text-blue-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-blue-50">
               {t('contact')}
             </Link>
             <div className="ml-2">
@@ -53,7 +53,7 @@ export default function Navigation() {
           <div className="md:hidden">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-slate-700 hover:text-amber-600 p-2 rounded-lg hover:bg-amber-50 transition-colors"
+              className="text-slate-700 hover:text-blue-600 p-2 rounded-lg hover:bg-blue-50 transition-colors"
             >
               {isMobileMenuOpen ? (
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -75,42 +75,42 @@ export default function Navigation() {
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link 
               href="/" 
-              className="block px-3 py-2 text-slate-700 hover:text-amber-600 hover:bg-amber-50 rounded-lg font-medium transition-colors"
+              className="block px-3 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('home')}
             </Link>
             <Link 
               href="/servants" 
-              className="block px-3 py-2 text-slate-700 hover:text-amber-600 hover:bg-amber-50 rounded-lg font-medium transition-colors"
+              className="block px-3 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('servants')}
             </Link>
             <Link 
               href="/sermons" 
-              className="block px-3 py-2 text-slate-700 hover:text-amber-600 hover:bg-amber-50 rounded-lg font-medium transition-colors"
+              className="block px-3 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('sermons')}
             </Link>
             <Link 
               href="/events" 
-              className="block px-3 py-2 text-slate-700 hover:text-amber-600 hover:bg-amber-50 rounded-lg font-medium transition-colors"
+              className="block px-3 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('events')}
             </Link>
             <Link 
               href="/about" 
-              className="block px-3 py-2 text-slate-700 hover:text-amber-600 hover:bg-amber-50 rounded-lg font-medium transition-colors"
+              className="block px-3 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('about')}
             </Link>
             <Link 
               href="/contact" 
-              className="block px-3 py-2 text-slate-700 hover:text-amber-600 hover:bg-amber-50 rounded-lg font-medium transition-colors"
+              className="block px-3 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('contact')}

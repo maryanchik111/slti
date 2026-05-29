@@ -72,10 +72,10 @@ export default function ContactPage() {
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-1">{t('schedule')}</h3>
                   <div className="text-gray-600 space-y-1">
-                    <p><strong>Неділя:</strong> 14:00 (Недільне служіння)</p>
-                    <p><strong>Субота:</strong> 15:40 (Недільна школа)</p>
+                    <p><strong>Неділя:</strong> 14:00 (Зібрання + дитяче служіння)</p>
+                    <p><strong>Середа:</strong> 19:00 (Молитва)</p>
+                    <p><strong>Четвер:</strong> 19:00 (Вивчення)</p>
                     <p><strong>Субота:</strong> 18:00 (Молодіжка)</p>
-                    <p><strong>Четвер:</strong> 19:00 (Вивчення Писання)</p>
                   </div>
                 </div>
               </div>

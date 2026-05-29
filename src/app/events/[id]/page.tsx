@@ -21,9 +21,10 @@ export default function EventDetailPage() {
     const event = events.find((e) => e.id === id);
 
     useEffect(() => {
-        if (event?.id === '2nd-birthday' || event?.category === 'baptizing' || event?.category === 'baby-shower' || event?.category === 'thanksgiving') {
+        if (event?.id === 'love-is-act-2026' || event?.id === '2nd-birthday' || event?.category === 'baptizing' || event?.category === 'baby-shower' || event?.category === 'thanksgiving') {
             setLoadingPhotos(true);
-            const folder = event.id === '2nd-birthday' ? 'birthday' :
+            const folder = event.id === 'love-is-act-2026' ? 'konfa-2026' :
+                event.id === '2nd-birthday' ? 'birthday' :
                 event.category === 'baptizing' ? 'Baptizing' :
                     event.category === 'baby-shower' ? 'BabyShower' : 'ThanksGivingDay';
             setDynamicPhotos([]); // Clear any existing photos
@@ -54,7 +55,7 @@ export default function EventDetailPage() {
                     <p className="text-xl text-gray-600 mb-8">Подію не знайдено / Event not found</p>
                     <Link
                         href="/events"
-                        className="inline-flex items-center px-6 py-3 bg-amber-600 text-white font-semibold rounded-full hover:bg-amber-700 transition-colors"
+                        className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors"
                     >
                         {t('backToEvents')}
                     </Link>
@@ -79,7 +80,7 @@ export default function EventDetailPage() {
                 {/* Navigation */}
                 <button
                     onClick={() => router.back()}
-                    className="mb-8 flex items-center text-amber-700 font-medium hover:text-amber-800 transition-colors group"
+                    className="mb-8 flex items-center text-blue-700 font-medium hover:text-blue-800 transition-colors group"
                 >
                     <svg className="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -97,21 +98,21 @@ export default function EventDetailPage() {
                                 className="w-full h-full object-cover"
                             />
                         ) : (
-                            <div className="w-full h-full bg-gradient-to-br from-amber-100 via-stone-100 to-amber-200 flex items-center justify-center">
-                                <svg className="w-32 h-32 text-amber-700/30" fill="currentColor" viewBox="0 0 24 24">
+                            <div className="w-full h-full bg-gradient-to-br from-blue-100 via-stone-100 to-blue-200 flex items-center justify-center">
+                                <svg className="w-32 h-32 text-blue-700/30" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M19 3H18V1H16V3H8V1H6V3H5C3.89 3 3.01 3.9 3.01 5L3 19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V8H19V19ZM7 10H12V15H7V10Z" />
                                 </svg>
                             </div>
                         )}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                         <div className="absolute bottom-0 left-0 p-8 md:p-12 text-white">
-                            <div className="inline-block px-4 py-1 rounded-full bg-amber-500 text-sm font-bold uppercase tracking-wider mb-4 shadow-lg">
+                            <div className="inline-block px-4 py-1 rounded-full bg-blue-500 text-sm font-bold uppercase tracking-wider mb-4 shadow-lg">
                                 {event.category === 'holiday' ? t('holidayEvents') : t('events')}
                             </div>
                             <h1 className="text-3xl md:text-5xl font-bold mb-6 drop-shadow-md">
                                 {language === 'en' ? event.titleEn || event.title : event.title}
                             </h1>
-                            <div className="flex flex-wrap gap-6 text-amber-100 font-medium">
+                            <div className="flex flex-wrap gap-6 text-blue-100 font-medium">
                                 <div className="flex items-center">
                                     <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                         <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
@@ -141,7 +142,7 @@ export default function EventDetailPage() {
                         {(dynamicPhotos.length > 0 || (event.photos && event.photos.length > 0)) && (
                             <div className="mt-16">
                                 <h2 className="text-3xl font-bold text-slate-800 mb-8 flex items-center">
-                                    <span className="w-10 h-1 bg-amber-500 mr-4"></span>
+                                    <span className="w-10 h-1 bg-blue-500 mr-4"></span>
                                     {t('eventGallery')}
                                     {loadingPhotos && <span className="ml-4 text-sm font-normal text-gray-500 animate-pulse">Завантаження...</span>}
                                 </h2>
@@ -175,14 +176,14 @@ export default function EventDetailPage() {
                         />
 
                         {/* CTA Section */}
-                        <div className="mt-16 p-8 bg-gradient-to-br from-amber-50 to-stone-100 rounded-3xl text-center border border-amber-100/50">
+                        <div className="mt-16 p-8 bg-gradient-to-br from-blue-50 to-stone-100 rounded-3xl text-center border border-blue-100/50">
                             <h3 className="text-2xl font-bold text-slate-800 mb-4">{t('joinFamily')}</h3>
                             <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
                                 {t('joinFamilyText')}
                             </p>
                             <button
                                 onClick={contactUs}
-                                className="bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
                             >
                                 {t('contactUs')}
                             </button>
