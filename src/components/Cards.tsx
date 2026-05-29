@@ -118,7 +118,8 @@ export function EventCard({ event }: EventCardProps) {
                   event.category === 'baptizing' ? t('baptism') :
                     event.category === 'baby-shower' ? t('babyShower') :
                       event.category === 'thanksgiving' ? t('thanksgiving') :
-                        t('events')}
+                        event.category === 'simeyne' ? (language === 'en' ? 'For Couples' : 'Для пар') :
+                          t('events')}
             </span>
           </div>
         </div>

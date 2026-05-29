@@ -168,7 +168,7 @@ export default function Home() {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {events.filter(e => e.category === 'holiday' || e.category === 'birthday' || e.category === 'baptizing' || e.category === 'baby-shower' || e.category === 'thanksgiving').map((event) => (
+              {events.filter(e => e.category === 'holiday' || e.category === 'birthday' || e.category === 'baptizing' || e.category === 'baby-shower' || e.category === 'thanksgiving' || e.category === 'simeyne').map((event) => (
                 <EventCard key={event.id} event={event} />
               ))}
             </div>
@@ -188,9 +188,9 @@ export default function Home() {
               {t('eventsSubtitle')}
             </p>
           </div>
-          {events.filter(e => e.category !== 'holiday' && e.category !== 'birthday' && e.category !== 'baptizing' && e.category !== 'baby-shower' && e.category !== 'thanksgiving').length > 0 ? (
+          {events.filter(e => e.category !== 'holiday' && e.category !== 'birthday' && e.category !== 'baptizing' && e.category !== 'baby-shower' && e.category !== 'thanksgiving' && e.category !== 'simeyne').length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {events.filter(e => e.category !== 'holiday' && e.category !== 'birthday' && e.category !== 'baptizing' && e.category !== 'baby-shower' && e.category !== 'thanksgiving').map((event) => (
+              {events.filter(e => e.category !== 'holiday' && e.category !== 'birthday' && e.category !== 'baptizing' && e.category !== 'baby-shower' && e.category !== 'thanksgiving' && e.category !== 'simeyne').map((event) => (
                 <EventCard key={event.id} event={event} />
               ))}
             </div>

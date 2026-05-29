@@ -21,12 +21,13 @@ export default function EventDetailPage() {
     const event = events.find((e) => e.id === id);
 
     useEffect(() => {
-        if (event?.id === 'love-is-act-2026' || event?.id === '2nd-birthday' || event?.category === 'baptizing' || event?.category === 'baby-shower' || event?.category === 'thanksgiving') {
+        if (event?.id === 'love-is-act-2026' || event?.id === '2nd-birthday' || event?.category === 'baptizing' || event?.category === 'baby-shower' || event?.category === 'thanksgiving' || event?.category === 'simeyne') {
             setLoadingPhotos(true);
             const folder = event.id === 'love-is-act-2026' ? 'konfa-2026' :
                 event.id === '2nd-birthday' ? 'birthday' :
                 event.category === 'baptizing' ? 'Baptizing' :
-                    event.category === 'baby-shower' ? 'BabyShower' : 'ThanksGivingDay';
+                event.category === 'baby-shower' ? 'BabyShower' :
+                event.category === 'simeyne' ? 'simeyne' : 'ThanksGivingDay';
             setDynamicPhotos([]); // Clear any existing photos
 
             listFolderItems(folder)

@@ -421,6 +421,21 @@ export const events: Event[] = [
     photos: []
   },
   {
+    id: 'simeyne-2026',
+    title: 'Зібрання для подружніх пар',
+    titleEn: 'Gathering for Married Couples',
+    description: 'Особливий недільний вечір, присвячений подружжям. Час для спілкування, молитви та зміцнення сімейних стосунків у колі однодумців.',
+    descriptionEn: 'A special Sunday evening dedicated to married couples. A time for fellowship, prayer, and strengthening family relationships among like-minded believers.',
+    date: '2026-02-15',
+    image: '/img/simeyne.jpg',
+    location: 'Церква "Скинія Любові та Істини"',
+    locationEn: 'Tabernacle of Love and Truth Church',
+    category: 'simeyne',
+    content: 'Запрошуємо всі подружні пари на особливий недільний вечір! Це час, щоб разом зупинитися, помолитися за ваш шлюб та вашу сім\'ю, поспілкуватися з іншими парами та отримати натхнення й підтримку для вашого спільного шляху з Богом.',
+    contentEn: 'We invite all married couples to a special Sunday evening! It is a time to pause together, pray for your marriage and your family, connect with other couples, and receive inspiration and support for your shared journey with God.',
+    photos: []
+  },
+  {
     id: 'baptizing-2025',
     title: 'Водне Хрещення',
     titleEn: 'Water Baptism',

@@ -6,8 +6,19 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { useNavigation } from '@/hooks/useNavigation';
 
 export default function EventsPage() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { visitService, contactUs } = useNavigation();
+
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+
+  const upcomingEvents = events
+    .filter((e) => new Date(e.date) >= now)
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+  const pastEvents = events
+    .filter((e) => new Date(e.date) < now)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <div className="min-h-screen bg-gray-50 py-16">
@@ -22,15 +33,24 @@ export default function EventsPage() {
           </p>
         </div>
 
-        {/* Events Grid */}
-        {events.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {events.map((event) => (
-              <EventCard key={event.id} event={event} />
-            ))}
+        {/* Upcoming Events */}
+        {upcomingEvents.length > 0 && (
+          <div className="mb-16">
+            <h2 className="text-2xl font-bold text-gray-800 mb-8 flex items-center gap-3">
+              <span className="w-3 h-3 bg-blue-600 rounded-full inline-block"></span>
+              {language === 'en' ? 'Upcoming Events' : 'Найближчі події'}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {upcomingEvents.map((event) => (
+                <EventCard key={event.id} event={event} />
+              ))}
+            </div>
           </div>
-        ) : (
-          <div className="text-center py-16">
+        )}
+
+        {/* No upcoming events */}
+        {upcomingEvents.length === 0 && (
+          <div className="text-center py-12 mb-16">
             <div className="max-w-md mx-auto">
               <div className="w-24 h-24 mx-auto mb-6 bg-gray-200 rounded-full flex items-center justify-center">
                 <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -39,6 +59,21 @@ export default function EventsPage() {
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-4">{t('noEventsPlanned')}</h3>
               <p className="text-gray-600 leading-relaxed">{t('noEventsMessage')}</p>
+            </div>
+          </div>
+        )}
+
+        {/* Past Events */}
+        {pastEvents.length > 0 && (
+          <div className="mb-16">
+            <h2 className="text-2xl font-bold text-gray-500 mb-8 flex items-center gap-3">
+              <span className="w-3 h-3 bg-gray-400 rounded-full inline-block"></span>
+              {language === 'en' ? 'Past Events' : 'Минулі події'}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-80">
+              {pastEvents.map((event) => (
+                <EventCard key={event.id} event={event} />
+              ))}
             </div>
           </div>
         )}
@@ -69,4 +104,4 @@ export default function EventsPage() {
       </div>
     </div>
   );
-}
+}

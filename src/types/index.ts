@@ -29,7 +29,7 @@ export interface Event {
   titleEn?: string;
   descriptionEn?: string;
   locationEn?: string;
-  category?: 'holiday' | 'regular' | 'birthday' | 'baptizing' | 'baby-shower' | 'thanksgiving';
+  category?: 'holiday' | 'regular' | 'birthday' | 'baptizing' | 'baby-shower' | 'thanksgiving' | 'simeyne';
   photos?: string[];
   content?: string;
   contentEn?: string;
