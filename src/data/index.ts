@@ -200,19 +200,6 @@ export const servants: Servant[] = [
       instagram: 'https://www.instagram.com/maryansobchuk/'
     }
   },
-  {
-    id: 'ludmyla-kovalchuk',
-    name: 'Людмила',
-    surname: 'Ковальчук',
-    nameEn: 'Ludmyla',
-    surnameEn: 'Kovalchuk',
-    role: 'Євангеліст',
-    roleEn: 'Evangelist',
-    image: '/img/ludmila.jpg',
-    bio: 'Людмила Ковальчук активно займається євангелізацією, поширюючи Добру Звістку серед людей.',
-    bioEn: 'Ludmyla Kovalchuk is actively involved in evangelization, spreading the Good News among people.',
-    socialMedia: {}
-  },
 
   // СОЦІАЛЬНЕ ТА СУСПІЛЬНЕ СЛУЖІННЯ
   {
