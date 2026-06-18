@@ -48,7 +48,7 @@ export default function Navigation() {
         bg-white/85 dark:bg-slate-900/85 backdrop-blur-2xl backdrop-saturate-150 
         border border-white/60 dark:border-white/20 rounded-[28px] 
         shadow-[0_16px_40px_-8px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.6)]
-        ${scrollingDown ? 'scale-[0.95] translate-y-2 opacity-95' : 'scale-100 translate-y-0 opacity-100'}
+        ${scrollingDown ? 'scale-[0.8] translate-y-2 opacity-95' : 'scale-100 translate-y-0 opacity-100'}
       `}>
         <div className="flex justify-around items-center h-[68px] px-1">
           {/* Home */}
