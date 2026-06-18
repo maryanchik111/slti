@@ -33,42 +33,11 @@ export default function EventsPage() {
           </p>
         </div>
 
-        {/* Upcoming Events */}
-        {upcomingEvents.length > 0 && (
-          <div className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-800 mb-8 flex items-center gap-3">
-              <span className="w-3 h-3 bg-blue-600 rounded-full inline-block"></span>
-              {language === 'en' ? 'Upcoming Events' : 'Найближчі події'}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {upcomingEvents.map((event) => (
-                <EventCard key={event.id} event={event} />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* No upcoming events */}
-        {upcomingEvents.length === 0 && (
-          <div className="text-center py-12 mb-16">
-            <div className="max-w-md mx-auto">
-              <div className="w-24 h-24 mx-auto mb-6 bg-gray-200 rounded-full flex items-center justify-center">
-                <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3a4 4 0 118 0v4h4a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V9a2 2 0 012-2h2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">{t('noEventsPlanned')}</h3>
-              <p className="text-gray-600 leading-relaxed">{t('noEventsMessage')}</p>
-            </div>
-          </div>
-        )}
-
         {/* Past Events */}
         {pastEvents.length > 0 && (
           <div className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-500 mb-8 flex items-center gap-3">
-              <span className="w-3 h-3 bg-gray-400 rounded-full inline-block"></span>
-              {language === 'en' ? 'Past Events' : 'Минулі події'}
+            <h2 className="text-2xl font-bold text-black mb-8 flex items-center gap-3">
+              {language === 'en' ? 'Events' : 'Події'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-80">
               {pastEvents.map((event) => (
@@ -86,13 +55,13 @@ export default function EventsPage() {
               {t('joinFamilyText')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <button
                 onClick={visitService}
                 className="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105"
               >
                 {t('visitService')}
               </button>
-              <button 
+              <button
                 onClick={contactUs}
                 className="border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-4 px-8 rounded-full transition-all duration-300"
               >
@@ -104,4 +73,4 @@ export default function EventsPage() {
       </div>
     </div>
   );
-}
+}

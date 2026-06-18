@@ -22,16 +22,19 @@ export function ServantCard({ servant }: ServantCardProps) {
   const imageSrc = getImageSrc();
 
   return (
-    <Link href={`/servant/${servant.id}`} className="group block h-full">
-      <div className="bg-white rounded-2xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col border border-gray-100">
-        <div className="relative h-72 flex-shrink-0 overflow-hidden">
+    <Link href={`/servant/${servant.id}`} className="block h-full outline-none group">
+      <div className="relative h-full flex flex-col bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)]">
+
+        {/* Image Area */}
+        <div className="relative h-80 w-full bg-slate-100 overflow-hidden shrink-0">
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-90"></div>
+
           {imageSrc ? (
             <img
               src={imageSrc}
               alt={`${servant.name} ${servant.surname}`}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
               onError={(e) => {
-                // Якщо зображення не завантажилось, показуємо градієнт
                 e.currentTarget.style.display = 'none';
                 const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
                 if (nextElement) {
@@ -40,33 +43,47 @@ export function ServantCard({ servant }: ServantCardProps) {
               }}
             />
           ) : null}
-          <div className={`absolute inset-0 bg-gradient-to-br from-blue-100 via-stone-100 to-blue-200 flex items-center justify-center ${imageSrc ? 'hidden' : 'flex'}`}>
-            <div className="w-24 h-24 bg-white/40 rounded-2xl flex items-center justify-center backdrop-blur-sm shadow-lg">
-              <svg className="w-14 h-14 text-blue-700" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1L9 7V9C9 10.1 9.9 11 11 11V16L7.5 17.5C7.1 17.7 6.6 17.5 6.4 17.1L4.8 14.2C4.4 13.5 3.5 13.3 2.8 13.7C2.1 14.1 1.9 15 2.3 15.7L3.9 18.6C4.8 20.2 6.6 20.9 8.3 20.1L13 18V11C14.1 11 15 10.1 15 9Z" />
-              </svg>
+          <div className={`absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center transition-transform duration-700 group-hover:scale-110 ${imageSrc ? 'hidden' : 'flex'}`}>
+            <svg className="w-20 h-20 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </div>
+
+          {/* Role Badge */}
+          <div className="absolute bottom-4 left-4 z-20">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+              <span className="text-xs font-semibold tracking-wide uppercase">
+                {language === 'en' ? servant.roleEn || servant.role : servant.role}
+              </span>
             </div>
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
-        <div className="p-6 flex-grow flex flex-col bg-gradient-to-b from-white to-stone-50">
-          <h3 className="text-xl font-bold text-slate-800 mb-1 group-hover:text-blue-700 transition-colors">
+
+        {/* Content Area */}
+        <div className="p-6 flex flex-col grow bg-white relative">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50/50 to-transparent rounded-bl-full pointer-events-none transition-opacity opacity-0 group-hover:opacity-100 duration-500"></div>
+
+          <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors leading-snug">
             {language === 'en' ? `${servant.nameEn || servant.name} ${servant.surnameEn || servant.surname}` : `${servant.name} ${servant.surname}`}
           </h3>
-          <p className="text-blue-700 font-semibold mb-4 text-sm uppercase tracking-wide">
-            {language === 'en' ? servant.roleEn || servant.role : servant.role}
-          </p>
-          <p className="text-gray-600 text-sm flex-grow leading-relaxed">
+
+          <p className="text-slate-600 text-sm mb-6 line-clamp-3 leading-relaxed flex-grow">
             {language === 'en' ?
-              (servant.bioEn || servant.bio || 'Служитель церкви, присвячений Богу та людям.').slice(0, 120) + ((servant.bioEn && servant.bioEn.length > 120) || (servant.bio && servant.bio.length > 120) ? '...' : '') :
-              (servant.bio || 'Служитель церкви, присвячений Богу та людям.').slice(0, 120) + (servant.bio && servant.bio.length > 120 ? '...' : '')
+              (servant.bioEn || servant.bio || 'Служитель церкви, присвячений Богу та людям.') :
+              (servant.bio || 'Служитель церкви, присвячений Богу та людям.')
             }
           </p>
-          <div className="mt-4 flex items-center text-blue-600 font-medium text-sm group-hover:text-blue-700 transition-colors">
-            <span>Детальніше</span>
-            <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
+
+          <div className="mt-auto pt-5 border-t border-slate-100 flex items-start justify-start">
+            <div className="flex items-center text-blue-600 font-bold text-sm uppercase tracking-wider group-hover:text-blue-700 transition-colors shrink-0">
+              <span>{language === 'en' ? 'Profile' : 'Детальніше'}</span>
+              <div className="w-8 h-8 rounded-full bg-blue-50 ml-2 flex items-center justify-center transform group-hover:translate-x-1 group-hover:bg-blue-100 transition-all duration-300">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -94,25 +111,30 @@ export function EventCard({ event }: EventCardProps) {
   };
 
   return (
-    <Link href={`/events/${event.id}`} className="block">
-      <div className="bg-white rounded-2xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border border-gray-100 group h-full flex flex-col">
-        <div className="relative h-52 bg-gradient-to-br from-blue-100 via-stone-100 to-blue-200 flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-600/20"></div>
+    <Link href={`/events/${event.id}`} className="block h-full outline-none group">
+      <div className="relative h-full flex flex-col bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)]">
+
+        {/* Card Header / Image Area */}
+        <div className="relative h-60 w-full bg-slate-100 overflow-hidden shrink-0">
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-80"></div>
+
           {event.image ? (
             <img
               src={event.image}
               alt={language === 'en' ? event.titleEn || event.title : event.title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
           ) : (
-            <div className="w-20 h-20 bg-white/50 rounded-2xl flex items-center justify-center backdrop-blur-sm shadow-lg relative z-10 group-hover:scale-110 transition-transform duration-300">
-              <svg className="w-12 h-12 text-blue-700" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 3H18V1H16V3H8V1H6V3H5C3.89 3 3.01 3.9 3.01 5L3 19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V8H19V19ZM7 10H12V15H7V10Z" />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
+              <svg className="w-16 h-16 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </div>
           )}
-          <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md z-20">
-            <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">
+
+          {/* Category Badge */}
+          <div className="absolute top-4 right-4 z-20">
+            <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-xs font-bold text-slate-800 uppercase tracking-widest shadow-sm">
               {event.category === 'holiday' ? t('holidayEvents') :
                 event.category === 'birthday' ? (language === 'en' ? 'Birthday' : 'День народження') :
                   event.category === 'baptizing' ? t('baptism') :
@@ -122,37 +144,54 @@ export function EventCard({ event }: EventCardProps) {
                           t('events')}
             </span>
           </div>
-        </div>
-        <div className="p-6 bg-gradient-to-b from-white to-stone-50 flex-grow flex flex-col">
-          <div className="flex items-center text-sm text-blue-700 mb-3 font-medium">
-            <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-            </svg>
-            {formatDate(event.date)}
+
+          {/* Date Float */}
+          <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2 text-white">
+            <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <span className="font-semibold text-sm drop-shadow-md">
+              {formatDate(event.date)}
+            </span>
           </div>
-          <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-blue-700 transition-colors">
+        </div>
+
+        {/* Content Area */}
+        <div className="p-6 flex flex-col grow bg-white relative">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50/50 to-transparent rounded-bl-full pointer-events-none transition-opacity opacity-0 group-hover:opacity-100 duration-500"></div>
+
+          <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors leading-snug">
             {language === 'en' ? event.titleEn || event.title : event.title}
           </h3>
-          <p className="text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed flex-grow">
+
+          <p className="text-slate-600 text-sm mb-6 line-clamp-3 leading-relaxed flex-grow">
             {language === 'en' ? event.descriptionEn || event.description : event.description}
           </p>
-          <div className="mt-auto">
-            {event.location && (
-              <div className="flex items-center text-sm text-gray-500 pt-4 border-t border-gray-100 mb-4">
-                <svg className="w-4 h-4 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+
+          <div className="mt-auto pt-5 border-t border-slate-100 flex flex-col items-start justify-between">
+            {event.location ? (
+              <div className="flex items-center text-sm text-slate-500 max-w-[65%]">
+                <svg className="w-4 h-4 mr-1.5 text-blue-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span className="font-medium">{language === 'en' ? event.locationEn || event.location : event.location}</span>
+                <span className="truncate text-lg">{language === 'en' ? event.locationEn || event.location : event.location}</span>
               </div>
-            )}
-            <div className="flex items-center text-blue-600 font-bold text-sm uppercase tracking-wider group-hover:text-blue-700 transition-colors">
+            ) : <div></div>}
+
+            <div className="flex items-center text-blue-600 font-bold text-sm uppercase tracking-wider group-hover:text-blue-700 transition-colors shrink-0">
               <span>{t('learnMore')}</span>
-              <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+              <div className="w-8 h-8 rounded-full bg-blue-50 ml-2 flex items-center justify-center transform group-hover:translate-x-1 group-hover:bg-blue-100 transition-all duration-300">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     </Link>
   );

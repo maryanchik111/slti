@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { Analytics } from '@vercel/analytics/react';
 
@@ -33,8 +32,7 @@ export default function RootLayout({
       >
         <LanguageProvider>
           <Navigation />
-          <main>{children}</main>
-          <Footer />
+          <main className="">{children}</main>
           <Analytics />
         </LanguageProvider>
       </body>
