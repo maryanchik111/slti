@@ -1,7 +1,21 @@
 import type { MetadataRoute } from 'next'
+import { adminDb } from '@/lib/firebase-admin'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://slti.church'
+
+  let sermonEntries: MetadataRoute.Sitemap = []
+  try {
+    const snapshot = await adminDb.collection('records').get()
+    sermonEntries = snapshot.docs.map((doc) => ({
+      url: `${baseUrl}/sermons/${doc.id}`,
+      lastModified: doc.data().syncedAt ? new Date(doc.data().syncedAt) : new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }))
+  } catch (error) {
+    console.error('Failed to load records for sitemap:', error)
+  }
 
   return [
     {
@@ -52,5 +66,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.6,
     },
+    ...sermonEntries,
   ]
 }

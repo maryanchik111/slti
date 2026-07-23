@@ -58,7 +58,7 @@ function msToCountdown(ms: number): Countdown {
 const pad = (n: number) => String(n).padStart(2, '0');
 
 // ─── Countdown cell ──────────────────────────────────────────────────────────
-function TimerCell({ value, label }: { value: number; label: string }) {
+function TimerCell({ value, label, isNext }: { value: number; label: string; isNext: boolean }) {
   const prevRef = useRef(value);
   const [flash, setFlash] = useState(false);
 
@@ -72,14 +72,18 @@ function TimerCell({ value, label }: { value: number; label: string }) {
   }, [value]);
 
   return (
-    <div className="flex flex-col items-center min-w-[34px]">
-      <span
-        className={`font-semibold text-xl leading-none tracking-tight transition-colors duration-300 ${flash ? 'text-blue-300' : 'text-slate-200'
+    <div className="flex flex-col items-center gap-1.5 w-full">
+      <div
+        className={`w-full aspect-square max-w-11 sm:max-w-12 rounded-xl flex items-center justify-center font-semibold text-lg sm:text-xl tabular-nums transition-all duration-300
+          ${flash ? 'scale-110' : 'scale-100'}
+          ${isNext
+            ? `bg-amber-400/15 border border-amber-300/30 ${flash ? 'text-amber-200 bg-amber-400/25' : 'text-amber-100'}`
+            : `bg-white/[0.06] border border-white/10 ${flash ? 'text-white' : 'text-white/85'}`
           }`}
       >
         {pad(value)}
-      </span>
-      <span className="mt-1 text-[9px] font-medium uppercase tracking-widest text-slate-500">
+      </div>
+      <span className="text-[9px] font-medium uppercase tracking-widest text-white/40 whitespace-nowrap">
         {label}
       </span>
     </div>
@@ -100,58 +104,49 @@ function EventCard({
 }) {
   return (
     <div
-      className={`relative rounded-[24px] p-5 text-left overflow-hidden transition-all duration-500
-        backdrop-blur-2xl backdrop-saturate-[1.5] group
+      className={`relative rounded-2xl px-5 py-5 text-left overflow-hidden transition-all duration-500
+        backdrop-blur-2xl backdrop-saturate-[1.5] group h-full
         ${isNext
-          ? 'bg-white/10 border border-white/20 shadow-[0_16px_40px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.4)]'
-          : 'bg-white/[0.03] border border-white/10 hover:bg-white/10 hover:border-white/20 hover:scale-[1.02] shadow-[0_8px_32px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.1)]'
+          ? 'bg-white/[0.07] border border-white/15 shadow-[0_16px_40px_rgba(0,0,0,0.35)]'
+          : 'bg-white/[0.03] border border-white/10 hover:bg-white/[0.06] hover:border-white/20 shadow-[0_8px_24px_rgba(0,0,0,0.2)]'
         }`}
     >
-      {/* Soft shine gradient across the card on hover */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-      {/* "Next up" badge */}
+      {/* Top accent bar for the next event */}
       {isNext && (
-        <div className="flex items-center gap-1.5 mb-3 relative z-10">
-          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.8)] animate-pulse" />
-          <span className="text-[10px] font-semibold uppercase tracking-widest text-amber-200 drop-shadow-sm">
-            {t('nextUp') || 'Найближче'}
-          </span>
-        </div>
+        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-amber-400/0 via-amber-400 to-amber-400/0" />
       )}
 
       {/* Header row */}
-      <div className="flex items-start justify-between gap-3 mb-5 relative z-10">
-        <div>
-          <p className="text-[15px] font-semibold text-white leading-snug mb-1 drop-shadow-md">
-            {t(event.titleKey)}
-          </p>
-          <p className="text-[11px] text-white/70 font-medium tracking-wider drop-shadow-sm">
-            {t(event.recurrenceKey)}
-          </p>
-        </div>
-
-        <div className={`w-10 h-10 rounded-[14px] flex items-center justify-center flex-shrink-0 transition-colors duration-500
-          ${isNext ? 'bg-amber-400/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)]' : 'bg-white/10 group-hover:bg-white/20'}`}>
+      <div className="flex items-center gap-3 mb-5 relative z-10">
+        <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-500
+          ${isNext ? 'bg-amber-400/20' : 'bg-white/10 group-hover:bg-white/15'}`}>
           <svg
-            className={`w-[20px] h-[20px] fill-none ${isNext ? 'stroke-amber-300' : 'stroke-white/90'}`}
+            className={`w-[18px] h-[18px] fill-none ${isNext ? 'stroke-amber-300' : 'stroke-white/85'}`}
             viewBox="0 0 24 24"
             strokeWidth={1.5}
           >
             {event.icon}
           </svg>
         </div>
+        <div className="min-w-0">
+          <p className="text-[14px] font-semibold text-white leading-snug truncate">
+            {t(event.titleKey)}
+          </p>
+          <p className="text-[11px] text-white/55 font-medium tracking-wide truncate">
+            {t(event.recurrenceKey)}
+          </p>
+        </div>
+        {isNext && (
+          <span className="ml-auto flex-shrink-0 w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.8)] animate-pulse" />
+        )}
       </div>
 
       {/* Countdown */}
-      <div className="flex items-end gap-1.5 relative z-10">
-        <TimerCell value={countdown.d} label={t('days') || 'днів'} />
-        <span className="text-xl font-light text-white/40 mb-1.5 drop-shadow-sm">:</span>
-        <TimerCell value={countdown.h} label={t('hours') || 'год'} />
-        <span className="text-xl font-light text-white/40 mb-1.5 drop-shadow-sm">:</span>
-        <TimerCell value={countdown.m} label={t('minutes') || 'хв'} />
-        <span className="text-xl font-light text-white/40 mb-1.5 drop-shadow-sm">:</span>
-        <TimerCell value={countdown.s} label={t('seconds') || 'сек'} />
+      <div className="grid grid-cols-4 gap-2 sm:gap-3 relative z-10 max-w-[220px] mx-auto">
+        <TimerCell value={countdown.d} label={t('days')} isNext={isNext} />
+        <TimerCell value={countdown.h} label={t('hours')} isNext={isNext} />
+        <TimerCell value={countdown.m} label={t('minutes')} isNext={isNext} />
+        <TimerCell value={countdown.s} label={t('seconds')} isNext={isNext} />
       </div>
     </div>
   );
@@ -364,7 +359,7 @@ export default function Hero() {
 
         {/* Headline */}
         <h1
-          className="font-bold leading-[1.1] text-white mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)] [text-shadow:0_2px_10px_rgba(0,0,0,1)]"
+          className="font-bold leading-[1.1] text-white mb-5 drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)] [text-shadow:0_2px_10px_rgba(0,0,0,1)]"
           style={{
             fontFamily: "'Playfair Display', Georgia, serif",
             fontSize: 'clamp(38px, 7.5vw, 76px)',
@@ -373,8 +368,27 @@ export default function Hero() {
           {t('heroSubtitle')}
         </h1>
 
+        {/* CTA buttons */}
+        <div className="flex flex-col sm:flex-row items-center gap-4 mb-14">
+          <button
+            onClick={joinService}
+            className="group relative inline-flex items-center justify-center gap-2 px-9 py-4 bg-amber-400 hover:bg-amber-300 text-slate-900 font-semibold rounded-full shadow-[0_8px_30px_rgba(251,191,36,0.4)] hover:shadow-[0_8px_40px_rgba(251,191,36,0.55)] transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+          >
+            {t('joinService')}
+            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
+          <button
+            onClick={learnMore}
+            className="inline-flex items-center justify-center gap-2 px-9 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-full border border-white/30 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+          >
+            {t('learnMore')}
+          </button>
+        </div>
+
         {/* Event countdown cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full">
           {sortedEvents.map((ev, i) => (
             <EventCard
               key={ev.key}

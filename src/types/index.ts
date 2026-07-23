@@ -53,4 +53,6 @@ export interface Record {
   description: string;
   videoUrl: string;
   category: string;
+  thumbnail?: string;
+  syncedAt?: string;
 }

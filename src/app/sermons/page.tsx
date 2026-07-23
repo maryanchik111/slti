@@ -1,8 +1,13 @@
 'use client';
 
-import { records } from '@/data';
+import { records as staticRecords } from '@/data';
+import { db } from '@/lib/firebase';
+import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { useNavigation } from '@/hooks/useNavigation';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import type { Record as SermonRecord } from '@/types';
 
 function RecordCard({ record }: { record: any }) {
   const { language } = useLanguage();
@@ -38,7 +43,7 @@ function RecordCard({ record }: { record: any }) {
           className="w-full h-full"
         />
       </div>
-      
+
       {/* Content */}
       <div className="p-6">
         <div className="flex items-center justify-between mb-3">
@@ -47,19 +52,22 @@ function RecordCard({ record }: { record: any }) {
             {record.category}
           </span>
         </div>
-        
+
         <h3 className="text-xl font-semibold text-gray-800 mb-3">{record.title}</h3>
         {record.description && (
-          <p className="text-gray-600 text-sm leading-relaxed mb-3">{record.description}</p>
+          <p className="text-gray-600 text-sm leading-relaxed mb-3 line-clamp-3">{record.description}</p>
         )}
-        
-        <div className="mt-4 pt-4 border-t border-gray-100">
+
+        <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
           <div className="flex items-center text-sm text-gray-500">
             <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"/>
             </svg>
             {record.speaker}
           </div>
+          <Link href={`/sermons/${record.id}`} className="text-sm text-blue-600 font-medium hover:text-blue-800">
+            Детальніше →
+          </Link>
         </div>
       </div>
     </div>
@@ -67,8 +75,32 @@ function RecordCard({ record }: { record: any }) {
 }
 
 export default function SermonsPage() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const { learnSchedule } = useNavigation();
+  const [records, setRecords] = useState<SermonRecord[]>(staticRecords);
+  const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    getDocs(query(collection(db, 'records'), orderBy('date', 'desc')))
+      .then((snapshot) => {
+        if (snapshot.empty) return;
+        setRecords(
+          snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as SermonRecord))
+        );
+      })
+      .catch((error) => console.error('Failed to load records from Firestore:', error));
+  }, []);
+
+  const searchQuery = search.trim().toLowerCase();
+  const filteredRecords = searchQuery
+    ? records.filter((record) =>
+        [record.title, record.speaker, record.description]
+          .join(' ')
+          .toLowerCase()
+          .includes(searchQuery)
+      )
+    : records;
+
   return (
     <div className="min-h-screen bg-gray-50 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,108 +114,34 @@ export default function SermonsPage() {
           </p>
         </div>
 
-        {/* Featured Record */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Найновіше служіння</h2>
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-            <div className="md:flex">
-              <div className="md:w-2/3">
-                <div className="relative aspect-video">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${records[0].videoUrl}`}
-                    title={records[0].title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="w-full h-full"
-                  />
-                </div>
-              </div>
-              <div className="md:w-1/3 p-8">
-                <div className="mb-4">
-                  <span className="text-sm text-blue-600 font-medium">
-                    {new Date(records[0].date).toLocaleDateString('uk-UA', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
-                  </span>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">{records[0].title}</h3>
-                {records[0].description && (
-                  <p className="text-gray-600 mb-6 leading-relaxed">{records[0].description}</p>
-                )}
-                <div className="flex items-center">
-                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                    <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800">{records[0].speaker}</p>
-                    <p className="text-sm text-gray-500">Спікер</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* Search */}
+        <div className="mb-12 max-w-2xl mx-auto">
+          <div className="relative">
+            <svg className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Пошук за назвою чи спікером..."
+              className="w-full pl-12 pr-4 py-4 rounded-full border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+            />
           </div>
         </div>
 
-        {/* Categories Filter */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">За категоріями</h2>
-          
-          {/* Проповіді */}
-          <div className="mb-12">
-            <h3 className="text-xl font-semibold text-blue-600 mb-6 flex items-center">
-              <span className="w-3 h-3 bg-blue-600 rounded-full mr-3"></span>
-              Проповіді
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {records.filter(record => record.category === 'Проповідь').map((record) => (
-                <RecordCard key={record.id} record={record} />
-              ))}
-            </div>
+        {/* Records */}
+        {filteredRecords.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {filteredRecords.map((record) => (
+              <RecordCard key={record.id} record={record} />
+            ))}
           </div>
-
-          {/* Богослужіння */}
-          <div className="mb-12">
-            <h3 className="text-xl font-semibold text-green-600 mb-6 flex items-center">
-              <span className="w-3 h-3 bg-green-600 rounded-full mr-3"></span>
-              Богослужіння
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {records.filter(record => record.category === 'Богослужіння').map((record) => (
-                <RecordCard key={record.id} record={record} />
-              ))}
-            </div>
+        ) : (
+          <div className="text-center py-16 text-gray-500 mb-12">
+            Нічого не знайдено за запитом «{search}»
           </div>
-
-          {/* Сімейна тематика */}
-          <div className="mb-12">
-            <h3 className="text-xl font-semibold text-purple-600 mb-6 flex items-center">
-              <span className="w-3 h-3 bg-purple-600 rounded-full mr-3"></span>
-              Сімейна тематика
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {records.filter(record => record.category === 'Сімʼя').map((record) => (
-                <RecordCard key={record.id} record={record} />
-              ))}
-            </div>
-          </div>
-
-          {/* Питання та відповіді */}
-          <div className="mb-12">
-            <h3 className="text-xl font-semibold text-orange-600 mb-6 flex items-center">
-              <span className="w-3 h-3 bg-orange-600 rounded-full mr-3"></span>
-              Питання та відповіді
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {records.filter(record => record.category === 'Питання').map((record) => (
-                <RecordCard key={record.id} record={record} />
-              ))}
-            </div>
-          </div>
-        </div>
+        )}
 
         {/* Call to Action */}
         <div className="mt-16 text-center">

@@ -24,6 +24,10 @@ export const translations = {
     thursday: "Середа 19:00",
     saturdaySchool: "Четвер 19:00",
     saturdayYouth: "Субота 18:00",
+    days: "днів",
+    hours: "год",
+    minutes: "хв",
+    seconds: "сек",
 
     // Sections
     ourServants: "Наші служителі",
@@ -102,7 +106,7 @@ export const translations = {
     allSermons: "Усі служіння",
     speaker: "Спікер",
     dontMissServices: "Не пропустіть наші служіння",
-    servicesText: "Приєднуйтесь до нас щонеділі о 10:00 для особливого часу поклоніння та навчання",
+    servicesText: "Приєднуйтесь до нас щонеділі о 14:00 для особливого часу поклоніння та навчання",
     learnSchedule: "Дізнатися про розклад",
 
     // Servants Page
@@ -175,6 +179,10 @@ export const translations = {
     thursday: "Wednesday 7:00 PM",
     saturdaySchool: "Thursday 7:00 PM",
     saturdayYouth: "Saturday 6:00 PM",
+    days: "days",
+    hours: "hrs",
+    minutes: "min",
+    seconds: "sec",
 
     // Sections
     ourServants: "Our Ministers",
@@ -253,7 +261,7 @@ export const translations = {
     allSermons: "All Services",
     speaker: "Speaker",
     dontMissServices: "Don't miss our services",
-    servicesText: "Join us every Sunday at 10:00 AM for a special time of worship and learning",
+    servicesText: "Join us every Sunday at 14:00 for a special time of worship and learning",
     learnSchedule: "Learn about schedule",
 
     // Servants Page

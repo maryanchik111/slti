@@ -6,13 +6,63 @@ import Manifest from '@/components/Manifest';
 import { servants, events } from '@/data';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { useNavigation } from '@/hooks/useNavigation';
+import { useEffect, useState } from 'react';
+import { db } from '@/lib/firebase';
+import { collection, getCountFromServer } from 'firebase/firestore';
+import Link from 'next/link';
 
 export default function Home() {
   const { t, language } = useLanguage();
   const { visitService, contactUs, learnMoreBibleSchool } = useNavigation();
+  const [sermonsCount, setSermonsCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    getCountFromServer(collection(db, 'records'))
+      .then((snapshot) => setSermonsCount(snapshot.data().count))
+      .catch((error) => console.error('Failed to load sermons count:', error));
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Hero />
+
+      {/* Sermons Stats Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-10 md:p-16 text-white relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
+            <div className="relative z-10 text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Наші проповіді та служіння</h2>
+              <p className="text-slate-300 max-w-2xl mx-auto text-lg">
+                Всі наші зібрання та проповіді доступні у відеозаписі на YouTube-каналі церкви.
+              </p>
+            </div>
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 text-center">
+              <div>
+                <p className="text-4xl md:text-5xl font-extrabold text-blue-400 mb-2">
+                  {sermonsCount !== null ? `${sermonsCount}+` : '—'}
+                </p>
+                <p className="text-slate-300 font-medium">Відеозаписів</p>
+              </div>
+              <div>
+                <p className="text-4xl md:text-5xl font-extrabold text-blue-400 mb-2">Щотижня</p>
+                <p className="text-slate-300 font-medium">Нові служіння</p>
+              </div>
+            </div>
+            <div className="relative z-10 text-center">
+              <Link
+                href="/sermons"
+                className="inline-flex items-center px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                Переглянути всі проповіді
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Servants Section */}
       <section className="py-20 bg-gradient-to-b from-white to-stone-50">
@@ -91,18 +141,18 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="lg:flex lg:items-center lg:justify-between lg:gap-16">
-            
+
             {/* Left Content */}
             <div className="lg:w-5/12 mb-16 lg:mb-0">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100/50 text-blue-700 font-semibold text-sm mb-6 border border-blue-200/50 shadow-sm backdrop-blur-sm">
                 <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
                 Щотижневі зустрічі
               </div>
-              
+
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
                 {t('schedule')}
               </h2>
-              
+
               <p className="text-xl text-slate-600 mb-10 leading-relaxed">
                 Приєднуйтесь до наших регулярних служінь та заходів. Ми завжди раді бачити нових людей в нашій духовній родині.
               </p>
@@ -137,19 +187,19 @@ export default function Home() {
             {/* Right Grid */}
             <div className="lg:w-7/12">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative">
-                
+
                 {/* Card 1: Sunday Service */}
                 <div className="group relative bg-white/80 backdrop-blur-xl rounded-3xl p-8 border border-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-2 overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-blue-600/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-125 duration-700 ease-out"></div>
-                  
+
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-blue-500/30 text-white relative z-10 group-hover:rotate-3 group-hover:scale-110 transition-all duration-300">
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                     </svg>
                   </div>
-                  
+
                   <h3 className="text-2xl font-bold text-slate-900 mb-4 relative z-10">{t('sundayService')}</h3>
-                  
+
                   <div className="inline-flex items-center gap-2 text-blue-700 font-semibold bg-blue-50/80 px-4 py-2.5 rounded-xl relative z-10 border border-blue-100/50">
                     <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -161,15 +211,15 @@ export default function Home() {
                 {/* Card 2: Prayer */}
                 <div className="group relative bg-white/80 backdrop-blur-xl rounded-3xl p-8 border border-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-2 overflow-hidden sm:mt-12">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-400/20 to-emerald-600/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-125 duration-700 ease-out"></div>
-                  
+
                   <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-emerald-500/30 text-white relative z-10 group-hover:rotate-3 group-hover:scale-110 transition-all duration-300">
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
                   </div>
-                  
+
                   <h3 className="text-2xl font-bold text-slate-900 mb-4 relative z-10">{t('prayer')}</h3>
-                  
+
                   <div className="inline-flex items-center gap-2 text-emerald-700 font-semibold bg-emerald-50/80 px-4 py-2.5 rounded-xl relative z-10 border border-emerald-100/50">
                     <svg className="w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -181,15 +231,15 @@ export default function Home() {
                 {/* Card 3: Sunday School */}
                 <div className="group relative bg-white/80 backdrop-blur-xl rounded-3xl p-8 border border-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-2 overflow-hidden sm:-mt-4">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-violet-400/20 to-violet-600/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-125 duration-700 ease-out"></div>
-                  
+
                   <div className="w-16 h-16 bg-gradient-to-br from-violet-500 to-violet-600 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-violet-500/30 text-white relative z-10 group-hover:rotate-3 group-hover:scale-110 transition-all duration-300">
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
                     </svg>
                   </div>
-                  
+
                   <h3 className="text-2xl font-bold text-slate-900 mb-4 relative z-10">{t('sundaySchool')}</h3>
-                  
+
                   <div className="inline-flex items-center gap-2 text-violet-700 font-semibold bg-violet-50/80 px-4 py-2.5 rounded-xl relative z-10 border border-violet-100/50">
                     <svg className="w-5 h-5 text-violet-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -201,15 +251,15 @@ export default function Home() {
                 {/* Card 4: Youth */}
                 <div className="group relative bg-white/80 backdrop-blur-xl rounded-3xl p-8 border border-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-2 overflow-hidden sm:mt-8">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-rose-400/20 to-rose-600/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-125 duration-700 ease-out"></div>
-                  
+
                   <div className="w-16 h-16 bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-rose-500/30 text-white relative z-10 group-hover:rotate-3 group-hover:scale-110 transition-all duration-300">
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                     </svg>
                   </div>
-                  
+
                   <h3 className="text-2xl font-bold text-slate-900 mb-4 relative z-10">{t('youth')}</h3>
-                  
+
                   <div className="inline-flex items-center gap-2 text-rose-700 font-semibold bg-rose-50/80 px-4 py-2.5 rounded-xl relative z-10 border border-rose-100/50">
                     <svg className="w-5 h-5 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -229,7 +279,7 @@ export default function Home() {
         <section className="py-24 bg-gradient-to-br from-blue-50/50 via-white to-blue-50/30 relative overflow-hidden">
           {/* subtle decorative background */}
           <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.08)_0%,rgba(255,255,255,0)_70%)] pointer-events-none -mt-96 -mr-96"></div>
-          
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100/50 text-blue-700 font-semibold text-sm mb-6 border border-blue-200/50 shadow-sm backdrop-blur-sm">
@@ -255,12 +305,12 @@ export default function Home() {
       {/* Events Section */}
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.05)_0%,rgba(255,255,255,0)_70%)] pointer-events-none -translate-y-1/2 -ml-64"></div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100/50 text-emerald-700 font-semibold text-sm mb-6 border border-emerald-200/50 shadow-sm backdrop-blur-sm">
-               <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-               Анонси
+              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+              Анонси
             </div>
             <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
               {t('upcomingEvents')}
